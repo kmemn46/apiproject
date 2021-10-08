@@ -1,18 +1,22 @@
 from django.shortcuts import render
-
-# Create your views here.
+import requests
 
 def rest(request):
     return render(request, 'index.html')
 
 def callapi(request):
 
-    print("callapi entered")
-    # path = '/image/sample/001.jpg'
-    # if request.POST['image_path']:
-    #     path = request.POST.get('image_path')
+    path = '/image/sample/001.jpg'
+    if request.POST['image_path']:
+        path = request.POST.get('image_path')
+    
+    # API call (mock呼び出し)
+    url = 'http://localhost:5000/api-mock'
+    payload = { 'image_path': path }
+    r = requests.post(url, data=payload)
 
-    # 処理を書きます
-    #object_list = {"sucsess" : "true" }
-    return render(request, 'result.html')
+    print(r.text)
+
+    # Modelに登録
+    return render(request, 'result.html', { 'result' : r.text })
 

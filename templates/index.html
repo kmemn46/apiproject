@@ -1,1 +1,13 @@
-初期画面
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+<div class="container">
+  <form action="{% url 'callapi' %}" method="POST">{% csrf_token %}
+    <p>image_path：<input type="text" name="image_path"></p>
+    <input type="submit" value="送信する">
+  </form>
+</div>
+{% endblock content %}
