@@ -13,10 +13,10 @@ def callapi(request):
     # API call (mock呼び出し)
     url = 'http://localhost:5000/api-mock'
     payload = { 'image_path': path }
-    r = requests.post(url, data=payload)
+    result = requests.post(url, data=payload)
 
-    print(r.text)
+    print(result.text)
 
     # Modelに登録
-    return render(request, 'result.html', { 'result' : r.text })
+    return render(request, 'result.html', { 'result' : result.text })
 
