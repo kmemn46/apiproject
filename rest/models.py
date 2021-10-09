@@ -6,10 +6,8 @@ class AnalysisModel(models.Model):
         max_length=255,
         null=True
     )
-    success = models.CharField(
-        blank=True,
-        max_length=255,
-        null=True
+    success = models.BooleanField(
+        default=False,
     )
     message = models.CharField(
         blank=True,
